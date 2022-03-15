@@ -1,0 +1,19 @@
+{
+  "lastupdate": "2022-03-15T20:15:54.4757746+07:00",
+  "SCOOP_REPO": "https://github.com/ScoopInstaller/Scoop",
+  "SCOOP_BRANCH": "master",
+  "alias": {
+    "reinstall": "scoop-reinstall",
+    "i": "scoop-i",
+    "add": "scoop-add",
+    "rm": "scoop-rm",
+    "remove": "scoop-remove",
+    "ls": "scoop-ls",
+    "u": "scoop-u",
+    "upgrade": "scoop-upgrade",
+    "ua": "scoop-ua",
+    "ca": "scoop-ca",
+    "cc": "scoop-cc",
+    "s": "scoop-s"
+  }
+}
