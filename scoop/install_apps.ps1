@@ -67,7 +67,6 @@ function Main {
     InstallScoop
     InstallApps
     PrintFinalMessage
-    Move-Item -Path ../powershell/Microsoft.PowerShell_profile.ps1 -Destination $PROFILE
 }
 
 Main
