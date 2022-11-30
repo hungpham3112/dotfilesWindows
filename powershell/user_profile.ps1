@@ -18,7 +18,17 @@ function clear { Clear-Host; winfetch }
 function refreshenv {
     $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 }
+function mcd {
+   [CmdletBinding()]
+   param(
+      [Parameter(Mandatory = $true)]
+      $Path
+   )
 
+   New-Item -Path $Path -ItemType Directory
+
+   Set-Location -Path $Path
+}
 Remove-Alias cls, clear
 
 # Alias
