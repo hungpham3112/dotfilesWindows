@@ -60,7 +60,7 @@ function InstallApps {
 }
 
 function MovePSSettings {
-    Move-Item -Path $env:USERPROFILE\.config\powershell\Microsoft.PowerShell_profile.ps1 -Destination $PROFILE 2>$null
+    Copy-Item -Path $env:USERPROFILE\.config\powershell\Microsoft.PowerShell_profile.ps1 -Destination $PROFILE 2>$null
     if ($?) {
         Write-Host "[Success] " -ForegroundColor Green -NoNewline
         Write-Host "Move PowerShell settings successfully"
