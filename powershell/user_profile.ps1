@@ -3,8 +3,8 @@ winfetch
 # set PowerShell to UTF-8
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 
-$omp_config = Join-Path $PSScriptRoot "night-owl.omp.json"
-oh-my-posh --init --shell pwsh --config $omp_config | Invoke-Expression
+$omp_config = Join-Path $env:POSH_THEMES_PATH "montys.omp.json"
+oh-my-posh init pwsh --config $omp_config | Invoke-Expression
 
 # PSReadLine
 Set-PSReadLineOption -EditMode Emacs
@@ -29,9 +29,9 @@ function mcd {
 
    Set-Location -Path $Path
 }
-Remove-Alias cls, clear
 
 # Alias
+Remove-Alias cls, clear
 Set-Alias rfenv refreshenv
 Set-Alias ll ls 
 Set-Alias g git
