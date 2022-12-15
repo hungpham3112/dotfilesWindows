@@ -59,14 +59,15 @@ function InstallApps {
     sudo scoop import $ConfigRoot/scoop/apps.txt 
 }
 
-function MovePSSettings {
+function CopyPSSettings {
+    mkdir (Split-Path $PROFILE -Parent) 1>$null 2>$null
     Copy-Item -Path $env:USERPROFILE\.config\powershell\Microsoft.PowerShell_profile.ps1 -Destination $PROFILE 2>$null
     if ($?) {
         Write-Host "[Success] " -ForegroundColor Green -NoNewline
-        Write-Host "Move PowerShell settings successfully"
+        Write-Host "Copy PowerShell settings successfully"
     } else {
         Write-Host "[Fail] " -ForegroundColor Red -NoNewline
-        Write-Host "Move PowerShell settings fail"
+        Write-Host "Copy PowerShell settings fail"
     }
 }
 
@@ -75,7 +76,7 @@ function Main {
     PrintLogo
     InstallScoop
     InstallApps
-    MovePSSettings
+    CopyPSSettings
     PrintFinalMessage
 }
 
