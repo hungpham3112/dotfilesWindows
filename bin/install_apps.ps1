@@ -21,13 +21,23 @@ Welcome to Apps Installer <3
     Write-Host $Logo -ForegroundColor Green
 }
 
+function CloneRepo {
+    if (![System.IO.Directory]::Exists($ConfigRoot)) {
+        git clone https://github.com/hungpham3112/.dotfiles_Windows.git $ConfigRoot
+    } else {
+        rd $ConfigRoot -Recurse -Force
+        git clone https://github.com/hungpham3112/.dotfiles_Windows.git $ConfigRoot
+    }
+}
+
 function InstallScoop {
     if (Get-Command scoop -ErrorAction SilentlyContinue) {
         Write-Host "[Success] " -ForegroundColor Green -NoNewline
-        Write-Host "Scoop is already installed" 
+        Write-Host "Scoop is already installed."
     } else {
         try {
             Write-Host "Installing scoop..."
+            # Handle installation in administrator privilege
             if (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(`
             [Security.Principal.WindowsBuiltInRole] "Administrator")) {
                 iwr -useb get.scoop.sh -outfile 'install.ps1'
@@ -56,27 +66,60 @@ function PrintFinalMessage {
 
 function InstallApps {
     scoop install sudo
-    sudo scoop import $ConfigRoot/scoop/apps.txt 
+    sudo scoop import $ConfigRoot/scoop/apps.txt
 }
 
-function CopyPSSettings {
-    mkdir (Split-Path $PROFILE -Parent) 1>$null 2>$null
-    Copy-Item -Path $env:USERPROFILE\.config\powershell\Microsoft.PowerShell_profile.ps1 -Destination $PROFILE 2>$null
+function CheckSuccessful {
+    param (
+        [string] $string
+    )
+    # $? is a variable return the state of the latest command
+    # i.e: True if the previous command run successfully and vice versa.
     if ($?) {
         Write-Host "[Success] " -ForegroundColor Green -NoNewline
-        Write-Host "Copy PowerShell settings successfully"
+        Write-Host "Symlink $string settings successfully."
     } else {
         Write-Host "[Fail] " -ForegroundColor Red -NoNewline
-        Write-Host "Copy PowerShell settings fail"
+        Write-Host "Symlink $string settings fail."
     }
+}
+function SymlinkPSSettings {
+    $ProfileParent = Split-Path $PROFILE -Parent
+    $ProfileLeaf = Split-Path $PROFILE -Leaf
+    if (![System.IO.File]::Exists($Profile)) {
+        mkdir $ProfileParent 1>$null 2>$null
+        sudo New-Item -ItemType symboliclink -Path $ProfileParent -name $ProfileLeaf -value $ConfigRoot\powershell\Microsoft.PowerShell_profile.ps1
+    } else {
+        Remove-Item $PROFILE 1>$null 2>$null
+        sudo New-Item -ItemType symboliclink -Path $ProfileParent -name $ProfileLeaf -value $ConfigRoot\powershell\Microsoft.PowerShell_profile.ps1
+    }
+    CheckSuccessful -string "Powershell"
+}
+
+function SymlinkWTSettings {
+    $WTSettingsPath = "$env:LOCALAPPDATA\Microsoft\Windows Terminal\settings.json"
+    $WTSettingsParent = Split-Path $WTSettingsPath -Parent
+    $WTSettingsLeaf = Split-Path $WTSettingsPath -Leaf
+    if (![System.IO.File]::Exists($WTSettingsPath)) {
+        mkdir $WTSettingsPATH 1>$null 2>$null
+        sudo New-Item -ItemType symboliclink -Path $WTSettingsParent -name $WTSettingsLeaf -value $ConfigRoot\powershell\settings.json
+    } else {
+        Remove-Item $WTSettingsPath 1>$null 2>$null
+        # Force to overwrite the WindowsTerminal's default settings
+        sudo New-Item -ItemType symboliclink -Path $WTSettingsParent -name $WTSettingsLeaf -value $ConfigRoot\powershell\settings.json -Force
+    }
+    CheckSuccessful -string "Windows Terminal"
 }
 
 function Main {
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
     PrintLogo
+    CloneRepo
     InstallScoop
     InstallApps
     CopyPSSettings
+    SymlinkPSSettings
+    SymlinkWTSettings
     PrintFinalMessage
 }
 

@@ -13,7 +13,7 @@
     "cc": "scoop-cc",
     "s": "scoop-s"
   },
-  "last_update": "2022-12-09T12:47:29.4078858+07:00",
-  "scoop_branch": "master",
-  "scoop_repo": "https://github.com/ScoopInstaller/Scoop"
+  "last_update": "2022-12-16T12:12:08.4982921+07:00",
+  "scoop_repo": "https://github.com/ScoopInstaller/Scoop",
+  "scoop_branch": "master"
 }
