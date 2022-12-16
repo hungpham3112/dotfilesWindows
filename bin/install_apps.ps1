@@ -117,7 +117,6 @@ function Main {
     CloneRepo
     InstallScoop
     InstallApps
-    CopyPSSettings
     SymlinkPSSettings
     SymlinkWTSettings
     PrintFinalMessage
