@@ -1,289 +1,289 @@
 {
     "apps": [
         {
+            "Info": "",
+            "Updated": "2022-12-17T09:47:32.0730447+07:00",
             "Source": "main",
-            "Name": "7zip",
-            "Updated": "2022-12-09T04:06:03.9142727+07:00",
             "Version": "22.01",
-            "Info": ""
+            "Name": "7zip"
         },
         {
+            "Info": "",
+            "Updated": "2022-12-17T09:57:59.1324383+07:00",
             "Source": "extras",
-            "Name": "alacritty",
-            "Updated": "2022-12-09T04:06:15.8261335+07:00",
             "Version": "0.11.0",
-            "Info": ""
+            "Name": "alacritty"
         },
         {
+            "Info": "",
+            "Updated": "2022-12-17T09:59:01.4181334+07:00",
             "Source": "extras",
-            "Name": "brave",
-            "Updated": "2022-08-06T14:45:01.6311947+07:00",
-            "Version": "1.42.86",
-            "Info": ""
+            "Version": "1.46.144",
+            "Name": "brave"
         },
         {
+            "Info": "",
+            "Updated": "2022-12-17T09:59:06.9722693+07:00",
             "Source": "main",
-            "Name": "busybox",
-            "Updated": "2022-12-09T04:06:35.2375375+07:00",
             "Version": "4784-g5507c8744",
-            "Info": ""
+            "Name": "busybox"
         },
         {
+            "Info": "",
+            "Updated": "2022-12-17T09:59:11.9378627+07:00",
             "Source": "extras",
-            "Name": "carnac",
-            "Updated": "2022-12-09T04:06:44.410884+07:00",
             "Version": "2.3.13",
-            "Info": ""
+            "Name": "carnac"
         },
         {
+            "Info": "",
+            "Updated": "2022-12-17T09:59:16.0685397+07:00",
             "Source": "main",
-            "Name": "ctags",
-            "Updated": "2022-12-09T04:06:53.3566559+07:00",
             "Version": "5.8",
-            "Info": ""
+            "Name": "ctags"
         },
         {
+            "Info": "",
+            "Updated": "2022-12-17T09:51:17.6035815+07:00",
             "Source": "main",
-            "Name": "dark",
-            "Updated": "2022-08-06T14:30:50.8935715+07:00",
             "Version": "3.11.2",
-            "Info": ""
+            "Name": "dark"
         },
         {
+            "Info": "",
+            "Updated": "2022-12-17T09:59:38.2947938+07:00",
             "Source": "extras",
-            "Name": "discord",
-            "Updated": "2022-12-09T04:07:34.7557926+07:00",
             "Version": "1.0.9007-14",
-            "Info": ""
+            "Name": "discord"
         },
         {
+            "Info": "",
+            "Updated": "2022-12-17T09:59:52.3271793+07:00",
             "Source": "main",
-            "Name": "docker",
-            "Updated": "2022-12-09T15:16:46.5271975+07:00",
-            "Version": "20.10.21",
-            "Info": ""
+            "Version": "20.10.22",
+            "Name": "docker"
         },
         {
+            "Info": "",
+            "Updated": "2023-01-09T18:39:08.956534+07:00",
+            "Source": null,
+            "Version": "108.0.1",
+            "Name": "firefox"
+        },
+        {
+            "Info": "",
+            "Updated": "2023-01-09T14:54:22.3551755+07:00",
+            "Source": "main",
+            "Version": "2.21.2",
+            "Name": "gh"
+        },
+        {
+            "Info": "",
+            "Updated": "2023-01-09T14:55:49.9679447+07:00",
+            "Source": "main",
+            "Version": "2.39.0.windows.2",
+            "Name": "git"
+        },
+        {
+            "Info": "",
+            "Updated": "2022-12-17T10:01:06.8105202+07:00",
             "Source": "extras",
-            "Name": "firefox",
-            "Updated": "2022-12-09T05:32:09.5151262+07:00",
-            "Version": "107.0.1",
-            "Info": ""
-        },
-        {
-            "Source": "main",
-            "Name": "gh",
-            "Updated": "2022-12-09T04:07:43.2344632+07:00",
-            "Version": "2.20.2",
-            "Info": ""
-        },
-        {
-            "Source": "main",
-            "Name": "git",
-            "Updated": "2022-08-06T14:43:15.8892026+07:00",
-            "Version": "2.37.1.windows.1",
-            "Info": ""
-        },
-        {
-            "Source": "extras",
-            "Name": "github",
-            "Updated": "2022-12-09T15:17:48.0054229+07:00",
             "Version": "3.1.2",
-            "Info": ""
+            "Name": "github"
         },
         {
+            "Info": "",
+            "Updated": "2022-12-17T10:01:39.1858493+07:00",
             "Source": "extras",
-            "Name": "googlechrome",
-            "Updated": "2022-12-09T04:11:15.2154518+07:00",
             "Version": "107.0.5304.107",
-            "Info": ""
+            "Name": "googlechrome"
         },
         {
+            "Info": "",
+            "Updated": "2023-01-09T15:02:49.5701055+07:00",
             "Source": "main",
-            "Name": "julia",
-            "Updated": "2022-12-09T04:12:12.0381613+07:00",
-            "Version": "1.8.3",
-            "Info": ""
+            "Version": "1.8.4",
+            "Name": "julia"
         },
         {
+            "Info": "",
+            "Updated": "2022-12-17T10:05:43.9229432+07:00",
             "Source": "main",
-            "Name": "llvm",
-            "Updated": "2022-12-09T04:14:05.9156816+07:00",
             "Version": "15.0.6",
-            "Info": ""
+            "Name": "llvm"
         },
         {
+            "Info": "",
+            "Updated": "2022-12-17T10:05:47.1202207+07:00",
             "Source": "main",
-            "Name": "make",
-            "Updated": "2022-12-09T15:17:50.420285+07:00",
             "Version": "4.4",
-            "Info": ""
+            "Name": "make"
         },
         {
+            "Info": "",
+            "Updated": "2022-12-17T10:06:58.1766312+07:00",
             "Source": "extras",
-            "Name": "miniconda3",
-            "Updated": "2022-12-09T04:15:24.5764289+07:00",
             "Version": "4.12.0",
-            "Info": ""
+            "Name": "miniconda3"
         },
         {
+            "Info": "",
+            "Updated": "2023-01-09T15:00:18.541607+07:00",
             "Source": "main",
-            "Name": "neovim",
-            "Updated": "2022-12-09T04:15:58.7976037+07:00",
-            "Version": "0.8.1",
-            "Info": ""
+            "Version": "0.8.2",
+            "Name": "neovim"
         },
         {
+            "Info": "",
+            "Updated": "2023-01-09T15:02:25.6050184+07:00",
             "Source": "main",
-            "Name": "nodejs",
-            "Updated": "2022-12-09T04:02:52.129599+07:00",
-            "Version": "19.2.0",
-            "Info": ""
+            "Version": "19.4.0",
+            "Name": "nodejs"
         },
         {
+            "Info": "",
+            "Updated": "2022-12-17T10:07:47.2504826+07:00",
             "Source": "extras",
-            "Name": "notion",
-            "Updated": "2022-12-09T04:16:49.3936338+07:00",
-            "Version": "2.0.38",
-            "Info": ""
+            "Version": "2.0.39",
+            "Name": "notion"
         },
         {
+            "Info": "",
+            "Updated": "2023-01-09T15:00:33.1053657+07:00",
             "Source": "main",
-            "Name": "nu",
-            "Updated": "2022-12-09T04:17:02.7946176+07:00",
-            "Version": "0.72.1",
-            "Info": ""
+            "Version": "0.73.0",
+            "Name": "nu"
         },
         {
+            "Info": "",
+            "Updated": "2023-01-09T15:00:59.4104159+07:00",
             "Source": "main",
-            "Name": "oh-my-posh",
-            "Updated": "2022-12-09T04:17:39.9488549+07:00",
-            "Version": "12.26.1",
-            "Info": ""
+            "Version": "12.36.0",
+            "Name": "oh-my-posh"
         },
         {
+            "Info": "",
+            "Updated": "2022-12-17T10:08:31.6280018+07:00",
             "Source": "main",
-            "Name": "pwsh",
-            "Updated": "2022-12-09T04:18:08.4439007+07:00",
-            "Version": "7.3.0",
-            "Info": ""
+            "Version": "7.3.1",
+            "Name": "pwsh"
         },
         {
+            "Info": "",
+            "Updated": "2022-12-17T09:52:47.5780431+07:00",
             "Source": "main",
-            "Name": "python",
-            "Updated": "2022-08-06T14:32:56.5708041+07:00",
-            "Version": "3.10.6",
-            "Info": ""
+            "Version": "3.11.1",
+            "Name": "python"
         },
         {
+            "Info": "",
+            "Updated": "2022-12-17T10:08:39.1936509+07:00",
             "Source": "extras",
-            "Name": "rufus",
-            "Updated": "2022-12-09T04:18:25.6216604+07:00",
             "Version": "3.21",
-            "Info": ""
+            "Name": "rufus"
         },
         {
+            "Info": "",
+            "Updated": "2022-12-17T10:08:41.425397+07:00",
             "Source": "extras",
-            "Name": "sharpkeys",
-            "Updated": "2022-12-09T04:18:35.7332812+07:00",
             "Version": "3.9.4",
-            "Info": ""
+            "Name": "sharpkeys"
         },
         {
+            "Info": "",
+            "Updated": "2022-12-17T10:09:01.4997064+07:00",
             "Source": "extras",
-            "Name": "snipaste",
-            "Updated": "2022-12-09T04:19:00.7628055+07:00",
             "Version": "1.16.2",
-            "Info": ""
+            "Name": "snipaste"
         },
         {
+            "Info": "",
+            "Updated": "2022-12-17T09:50:02.4998689+07:00",
             "Source": "main",
-            "Name": "sudo",
-            "Updated": "2022-12-09T04:02:19.4473829+07:00",
             "Version": "0.2020.01.26",
-            "Info": ""
+            "Name": "sudo"
         },
         {
+            "Info": "",
+            "Updated": "2022-12-17T10:09:24.5472837+07:00",
             "Source": "extras",
-            "Name": "thonny",
-            "Updated": "2022-12-09T04:19:33.7589804+07:00",
             "Version": "4.0.1",
-            "Info": ""
+            "Name": "thonny"
         },
         {
+            "Info": "",
+            "Updated": "2022-12-17T10:09:36.6698935+07:00",
             "Source": "extras",
-            "Name": "vcredist2022",
-            "Updated": "2022-12-09T04:20:20.3847535+07:00",
             "Version": "14.34.31931.0",
-            "Info": ""
+            "Name": "vcredist2022"
         },
         {
+            "Info": "",
+            "Updated": "2023-01-09T15:02:32.6012539+07:00",
             "Source": "versions",
-            "Name": "vim-nightly",
-            "Updated": "2022-12-09T04:03:24.9161691+07:00",
-            "Version": "9.0.1026",
-            "Info": ""
+            "Version": "9.0.1153",
+            "Name": "vim-nightly"
         },
         {
+            "Info": "",
+            "Updated": "2022-12-17T10:09:37.6652881+07:00",
             "Source": "main",
-            "Name": "vimtutor",
-            "Updated": "2022-12-09T04:20:36.6005123+07:00",
             "Version": "0.2018.07.25",
-            "Info": ""
+            "Name": "vimtutor"
         },
         {
+            "Info": "",
+            "Updated": "2022-12-17T10:09:59.1681168+07:00",
             "Source": "extras",
-            "Name": "vscode",
-            "Updated": "2022-12-09T04:21:33.5955336+07:00",
-            "Version": "1.74.0",
-            "Info": ""
+            "Version": "1.74.1",
+            "Name": "vscode"
         },
         {
+            "Info": "",
+            "Updated": "2022-12-17T10:10:08.3527226+07:00",
             "Source": "extras",
-            "Name": "windows-terminal",
-            "Updated": "2022-12-09T04:21:50.2893018+07:00",
-            "Version": "1.15.2874.0",
-            "Info": ""
+            "Version": "1.15.3465.0",
+            "Name": "windows-terminal"
         },
         {
+            "Info": "",
+            "Updated": "2022-12-17T10:10:09.122044+07:00",
             "Source": "main",
-            "Name": "winfetch",
-            "Updated": "2022-12-09T04:21:51.0202794+07:00",
             "Version": "2.4.1",
-            "Info": ""
+            "Name": "winfetch"
         },
         {
+            "Info": "Global install",
+            "Updated": "2022-12-17T09:50:52.590396+07:00",
             "Source": "nerd-fonts",
-            "Name": "cousine-NF-Mono",
-            "Updated": "2022-12-09T04:02:32.6490259+07:00",
             "Version": "2.2.2",
-            "Info": "Global install"
+            "Name": "cousine-NF-Mono"
         }
     ],
     "buckets": [
         {
             "Name": "extras",
-            "Source": "https://github.com/ScoopInstaller/Extras",
-            "Updated": "2022-12-09T15:43:31+07:00",
+            "Source": null,
+            "Updated": null,
             "Manifests": 1745
         },
         {
             "Name": "main",
             "Source": "https://github.com/ScoopInstaller/Main",
-            "Updated": "2022-12-09T15:28:13+07:00",
-            "Manifests": 1124
+            "Updated": "2023-01-09T08:53:17+07:00",
+            "Manifests": 1139
         },
         {
             "Name": "nerd-fonts",
             "Source": "https://github.com/matthewjberger/scoop-nerd-fonts",
-            "Updated": "2022-12-04T13:21:25+07:00",
-            "Manifests": 209
+            "Updated": "2023-01-07T16:11:31+07:00",
+            "Manifests": 214
         },
         {
             "Name": "versions",
             "Source": "https://github.com/ScoopInstaller/Versions",
-            "Updated": "2022-12-09T15:38:47+07:00",
-            "Manifests": 398
+            "Updated": "2023-01-09T11:36:17+07:00",
+            "Manifests": 406
         }
     ]
 }
