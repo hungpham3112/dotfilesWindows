@@ -71,16 +71,17 @@ function InstallApps {
 
 function CheckSuccessful {
     param (
-        [string] $string
+        [string] $action,
+        [string] $name
     )
     # $? is a variable return the state of the latest command
     # i.e: True if the previous command run successfully and vice versa.
     if ($?) {
         Write-Host "[Success] " -ForegroundColor Green -NoNewline
-        Write-Host "Symlink $string settings successfully."
+        Write-Host "$action $name settings successfully."
     } else {
         Write-Host "[Fail] " -ForegroundColor Red -NoNewline
-        Write-Host "Symlink $string settings fail."
+        Write-Host "$action $name settings fail."
     }
 }
 function SymlinkPSSettings {
@@ -93,7 +94,7 @@ function SymlinkPSSettings {
         Remove-Item $PROFILE 1>$null 2>$null
         sudo New-Item -ItemType symboliclink -Path $ProfileParent -name $ProfileLeaf -value $ConfigRoot\powershell\Microsoft.PowerShell_profile.ps1
     }
-    CheckSuccessful -string "Powershell"
+    CheckSuccessful "Symlink" "Powershell"
 }
 
 function SymlinkWTSettings {
@@ -108,7 +109,17 @@ function SymlinkWTSettings {
         # Force to overwrite the WindowsTerminal's default settings
         sudo New-Item -ItemType symboliclink -Path $WTSettingsParent -name $WTSettingsLeaf -value $ConfigRoot\powershell\settings.json -Force
     }
-    CheckSuccessful -string "Windows Terminal"
+    CheckSuccessful "Symlink" "Windows Terminal"
+}
+
+function ClonePythonRepo {
+    sudo git clone https://github.com/hungpham3112/PythonProjects.git $HOME/PythonProjects
+    CheckSuccessful "Clone" "Python repository"
+}
+
+function CloneJuliaRepo {
+    sudo git clone https://github.com/hungpham3112/JuliaProjects.git $HOME/JuliaProjects
+    CheckSuccessful "Clone" "Julia repository"
 }
 
 function Main {
@@ -119,6 +130,8 @@ function Main {
     InstallApps
     SymlinkPSSettings
     SymlinkWTSettings
+    CloneJuliaRepo
+    ClonePythonRepo
     PrintFinalMessage
 }
 
