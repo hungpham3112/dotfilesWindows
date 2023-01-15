@@ -102,10 +102,9 @@ function SymlinkWTSettings {
     $WTSettingsParent = Split-Path $WTSettingsPath -Parent
     $WTSettingsLeaf = Split-Path $WTSettingsPath -Leaf
     if (![System.IO.File]::Exists($WTSettingsPath)) {
-        mkdir $WTSettingsPATH 1>$null 2>$null
+        mkdir $WTSettingsParent 1>$null 2>$null
         sudo New-Item -ItemType symboliclink -Path $WTSettingsParent -name $WTSettingsLeaf -value $ConfigRoot\powershell\settings.json
     } else {
-        Remove-Item $WTSettingsPath 1>$null 2>$null
         # Force to overwrite the WindowsTerminal's default settings
         sudo New-Item -ItemType symboliclink -Path $WTSettingsParent -name $WTSettingsLeaf -value $ConfigRoot\powershell\settings.json -Force
     }
