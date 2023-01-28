@@ -55,6 +55,17 @@ function InstallScoop {
     }
 }
 
+function InstallGit {
+    if (Get-Command git -ErrorAction SilentlyContinue) {
+        Write-Host "[Success] " -ForegroundColor Green -NoNewline
+        Write-Host "Git is already installed."
+        git config --system --unset credential.helper >$null 2>$null
+    } else {
+        scoop install git >$null
+        git config --system --unset credential.helper >$null 2>$null
+    }
+}
+
 function PrintFinalMessage {
     $FinalMessage = @"
     ------------------------------------------------------------
@@ -126,6 +137,7 @@ function Main {
     PrintLogo
     CloneRepo
     InstallScoop
+    InstallGit
     InstallApps
     SymlinkPSSettings
     SymlinkWTSettings
