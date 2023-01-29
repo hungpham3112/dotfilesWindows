@@ -95,6 +95,7 @@ function CheckSuccessful {
         Write-Host "$action $name settings fail."
     }
 }
+
 function SymlinkPSSettings {
     $ProfileParent = Split-Path $PROFILE -Parent
     $ProfileLeaf = Split-Path $PROFILE -Leaf
@@ -122,6 +123,20 @@ function SymlinkWTSettings {
     CheckSuccessful "Symlink" "Windows Terminal"
 }
 
+function SymlinkAlacrittySettings {
+    $AlacrittySettingsPath = "$env:APPDATA\alacritty\alacritty.yml"
+    $AlacrittySettingsParent = Split-Path $AlacrittySettingsPath -Parent
+    $AlacrittySettingsLeaf = Split-Path $AlacrittySettingsPath -Leaf
+    if (![System.IO.File]::Exists($AlacrittySettingsPath)) {
+        mkdir $AlacrittySettingsParent 1>$null 2>$null
+        sudo New-Item -ItemType symboliclink -Path $AlacrittySettingsParent -name $AlacrittySettingsLeaf -value $ConfigRoot\alacritty\alacritty.yml
+    } else {
+        Remove-Item $PROFILE 1>$null 2>$null
+        sudo New-Item -ItemType symboliclink -Path $AlacrittySettingsParent -name $AlacrittySettingsLeaf -value $ConfigRoot\alacritty\alacritty.yml
+    }
+    CheckSuccessful "Symlink" "Alacritty"
+}
+
 function ClonePythonRepo {
     sudo git clone https://github.com/hungpham3112/PythonProjects.git $HOME/PythonProjects
     CheckSuccessful "Clone" "Python repository"
@@ -141,6 +156,7 @@ function Main {
     InstallApps
     SymlinkPSSettings
     SymlinkWTSettings
+    SymlinkAlacrittySettings
     CloneJuliaRepo
     ClonePythonRepo
     PrintFinalMessage
