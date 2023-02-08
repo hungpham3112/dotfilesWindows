@@ -13,6 +13,7 @@ Set-PSReadLineKeyHandler -Chord 'Ctrl+d' -Function DeleteChar
 
 # Env
 $env:GIT_SSH = "C:\Windows\system32\OpenSSH\ssh.exe"
+$env:JULIA_NUM_THREADS = 4
 
 function clear { Clear-Host; winfetch }
 
