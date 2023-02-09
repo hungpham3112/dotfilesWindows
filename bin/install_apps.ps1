@@ -78,7 +78,7 @@ function PrintFinalMessage {
 
 function InstallApps {
     scoop install sudo
-    sudo scoop import $ConfigRoot/scoop/apps.txt
+    sudo scoop import $ConfigRoot/scoop/apps.json
 }
 
 function CheckSuccessful {
