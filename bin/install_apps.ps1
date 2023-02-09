@@ -151,9 +151,9 @@ function CloneJuliaRepo {
 function Main {
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
     PrintLogo
-    CloneRepo
     InstallScoop
     InstallGit
+    CloneRepo
     InstallApps
     SymlinkPSSettings
     SymlinkWTSettings
