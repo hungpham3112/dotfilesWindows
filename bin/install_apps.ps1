@@ -1,5 +1,5 @@
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser # Optional: Needed to run a remote script the first time
-$ConfigRoot = "$env:USERPROFILE\.config\"
+$ConfigRoot = "$ENV:USERPROFILE\.config\"
 
 function PrintLogo {
     $Logo = @'
@@ -27,6 +27,7 @@ function CloneRepo {
     } else {
         rd $ConfigRoot -Recurse -Force
         git clone https://github.com/hungpham3112/.dotfiles_Windows.git $ConfigRoot
+        git config --global --add safe.directory $ENV:USERPROFILE/scoop
     }
 }
 
@@ -50,7 +51,7 @@ function InstallScoop {
         catch {
             Write-Host "[Fail] " -ForegroundColor Red -NoNewline
             Write-Host "An error occurred while installing scoop. Please run installer again..."
-            rd $env:USERPROFILE/scoop -Recurse -Force >$null 2>$null
+            rd $ENV:USERPROFILE/scoop -Recurse -Force >$null 2>$null
         }
     }
 }
@@ -110,7 +111,7 @@ function SymlinkPSSettings {
 }
 
 function SymlinkWTSettings {
-    $WTSettingsPath = "$env:LOCALAPPDATA\Microsoft\Windows Terminal\settings.json"
+    $WTSettingsPath = "$ENV:LOCALAPPDATA\Microsoft\Windows Terminal\settings.json"
     $WTSettingsParent = Split-Path $WTSettingsPath -Parent
     $WTSettingsLeaf = Split-Path $WTSettingsPath -Leaf
     if (![System.IO.File]::Exists($WTSettingsPath)) {
@@ -124,7 +125,7 @@ function SymlinkWTSettings {
 }
 
 function SymlinkAlacrittySettings {
-    $AlacrittySettingsPath = "$env:APPDATA\alacritty\alacritty.yml"
+    $AlacrittySettingsPath = "$ENV:APPDATA\alacritty\alacritty.yml"
     $AlacrittySettingsParent = Split-Path $AlacrittySettingsPath -Parent
     $AlacrittySettingsLeaf = Split-Path $AlacrittySettingsPath -Leaf
     if (![System.IO.File]::Exists($AlacrittySettingsPath)) {
