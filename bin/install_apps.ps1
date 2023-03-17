@@ -148,6 +148,20 @@ function CloneJuliaRepo {
     CheckSuccessful "Clone" "Julia repository"
 }
 
+function SymlinkJuliaStartupFile {
+    $JuliaStartupFilePath = "$ENV:USERPROFILE\.julia\config\startup.jl"
+    $JuliaStartupFileParent = Split-Path $JuliaStartupFilePath -Parent
+    $JuliaStartupFileLeaf = Split-Path $JuliaStartupFilePath -Leaf
+    if (![System.IO.File]::Exists($JuliaStartupFilePath)) {
+        mkdir $JuliaStartupFileParent 1>$null 2>$null
+        sudo New-Item -ItemType symboliclink -Path $JuliaStartupFileParent -name $JuliaStartupFileLeaf -value $ConfigRoot\julia\startup.jl
+    } else {
+        Remove-Item $JuliaStartupFilePath 1>$null 2>$null
+        sudo New-Item -ItemType symboliclink -Path $JuliaStartupFileParent -name $JuliaStartupFileLeaf -value $ConfigRoot\julia\startup.jl
+    }
+    CheckSuccessful "Symlink" "Julia startup file"
+}
+
 function Main {
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
     PrintLogo
@@ -158,6 +172,7 @@ function Main {
     SymlinkPSSettings
     SymlinkWTSettings
     SymlinkAlacrittySettings
+    SymlinkJuliaStartupFile
     CloneJuliaRepo
     ClonePythonRepo
     PrintFinalMessage
