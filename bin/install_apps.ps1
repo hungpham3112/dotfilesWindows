@@ -98,13 +98,14 @@ function CheckSuccessful {
 }
 
 function SymlinkPSSettings {
-    $ProfileParent = Split-Path $PROFILE -Parent
-    $ProfileLeaf = Split-Path $PROFILE -Leaf
-    if (![System.IO.File]::Exists($Profile)) {
+    $ProfilePath = "$PSHOME/profile.ps1"
+    $ProfileParent = $PSHOME
+    $ProfileLeaf = Split-Path $ProfilePath -Leaf
+    if (![System.IO.File]::Exists($ProfileParent)) {
         mkdir $ProfileParent 1>$null 2>$null
         sudo New-Item -ItemType symboliclink -Path $ProfileParent -name $ProfileLeaf -value $ConfigRoot\powershell\Microsoft.PowerShell_profile.ps1
     } else {
-        Remove-Item $PROFILE 1>$null 2>$null
+        Remove-Item $ProfilePath 1>$null 2>$null
         sudo New-Item -ItemType symboliclink -Path $ProfileParent -name $ProfileLeaf -value $ConfigRoot\powershell\Microsoft.PowerShell_profile.ps1
     }
     CheckSuccessful "Symlink" "Powershell"
@@ -149,14 +150,14 @@ function CloneJuliaRepo {
 }
 
 function SymlinkJuliaStartupFile {
-    $JuliaStartupFilePath = "$ENV:USERPROFILE\.julia\config\startup.jl"
+    $JuliaStartupFilePath = "$ENV:USERPROFILE/.julia/config/startup.jl"
     $JuliaStartupFileParent = Split-Path $JuliaStartupFilePath -Parent
     $JuliaStartupFileLeaf = Split-Path $JuliaStartupFilePath -Leaf
-    if (![System.IO.File]::Exists($JuliaStartupFilePath)) {
+    if (![System.IO.File]::Exists($AlacrittySettingsPath)) {
         mkdir $JuliaStartupFileParent 1>$null 2>$null
         sudo New-Item -ItemType symboliclink -Path $JuliaStartupFileParent -name $JuliaStartupFileLeaf -value $ConfigRoot\julia\startup.jl
     } else {
-        Remove-Item $JuliaStartupFilePath 1>$null 2>$null
+        Remove-Item $PROFILE 1>$null 2>$null
         sudo New-Item -ItemType symboliclink -Path $JuliaStartupFileParent -name $JuliaStartupFileLeaf -value $ConfigRoot\julia\startup.jl
     }
     CheckSuccessful "Symlink" "Julia startup file"
