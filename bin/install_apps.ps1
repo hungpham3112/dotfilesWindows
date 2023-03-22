@@ -132,7 +132,7 @@ function SymlinkAlacrittySettings {
         mkdir $AlacrittySettingsParent 1>$null 2>$null
         sudo New-Item -ItemType symboliclink -Path $AlacrittySettingsParent -name $AlacrittySettingsLeaf -value $ConfigRoot\alacritty\alacritty.yml
     } else {
-        Remove-Item $PROFILE 1>$null 2>$null
+        Remove-Item $AlacrittySettingsPath 1>$null 2>$null
         sudo New-Item -ItemType symboliclink -Path $AlacrittySettingsParent -name $AlacrittySettingsLeaf -value $ConfigRoot\alacritty\alacritty.yml
     }
     CheckSuccessful "Symlink" "Alacritty"
