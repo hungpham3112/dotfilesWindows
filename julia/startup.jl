@@ -2,6 +2,11 @@ ENV["JULIA_NUM_THREADS"] = 8
 ENV["EDITOR"] = "vim"
 ENV["PYTHON"] = "python"
 
+using Pkg
+if isfile("Project.toml") && isfile("Manifest.toml")
+    Pkg.activate(".")
+end
+
 atreplinit() do repl
     try
         @eval using OhMyREPL
@@ -21,5 +26,5 @@ end
 try
     @eval using Revise
 catch e
-    @warn "Error initializing Revise" exception=(e, catch_backtrace())
+    @warn "Error initializing Revise" exception = (e, catch_backtrace())
 end
