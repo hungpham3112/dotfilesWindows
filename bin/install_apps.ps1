@@ -23,10 +23,10 @@ Welcome to Apps Installer <3
 
 function CloneRepo {
     if (![System.IO.Directory]::Exists($ConfigRoot)) {
-        git clone https://github.com/hungpham3112/.dotfiles_Windows.git $ConfigRoot
+        git clone https://github.com/hungpham3112/.dotfilesWindows.git $ConfigRoot
     } else {
         rd $ConfigRoot -Recurse -Force
-        git clone https://github.com/hungpham3112/.dotfiles_Windows.git $ConfigRoot
+        git clone https://github.com/hungpham3112/.dotfilesWindows.git $ConfigRoot
         git config --global --add safe.directory $ENV:USERPROFILE/scoop
     }
 }
