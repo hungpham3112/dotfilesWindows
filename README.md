@@ -1,4 +1,4 @@
-# .dotfiles_Windows
+# .dotfilesWindows
 
 ## :rocket: Quick-start
 
