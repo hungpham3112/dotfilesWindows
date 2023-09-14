@@ -96,7 +96,6 @@ function CheckSuccessful {
         Write-Host "$action $name settings fail."
     }
 }
-
 function SymlinkPSSettings {
     $ProfileParent = Split-Path $PROFILE -Parent
     $ProfileLeaf = Split-Path $PROFILE -Leaf
@@ -107,7 +106,32 @@ function SymlinkPSSettings {
         Remove-Item $PROFILE 1>$null 2>$null
         sudo New-Item -ItemType symboliclink -Path $ProfileParent -name $ProfileLeaf -value $ConfigRoot\powershell\Microsoft.PowerShell_profile.ps1
     }
+    CheckSuccessful "Symlink" "Windows Powershell"
+}
+
+function ExecuteScriptInNewPwshSession {
+    param (
+        [scriptblock] $ScriptBlock
+    )
+
+    Start-Process pwsh.exe -ArgumentList "-NoProfile -NoExit -Command & {$ScriptBlock}"
+}
+
+function SymlinkPSSettingsInNewPwshSession {
+    $ScriptBlock = {
+        $ProfileParent = Split-Path $PROFILE -Parent
+        $ProfileLeaf = Split-Path $PROFILE -Leaf
+        if (![System.IO.File]::Exists($Profile)) {
+            mkdir $ProfileParent 1>$null 2>$null
+            sudo New-Item -ItemType symboliclink -Path $ProfileParent -name $ProfileLeaf -value $ENV:USERPROFILE\.config\powershell\Microsoft.PowerShell_profile.ps1
+        } else {
+            Remove-Item $PROFILE 1>$null 2>$null
+            sudo New-Item -ItemType symboliclink -Path $ProfileParent -name $ProfileLeaf -value $ENV:USERPROFILE\.config\powershell\Microsoft.PowerShell_profile.ps1
+        }
+        exit
+    }
     CheckSuccessful "Symlink" "Powershell"
+    ExecuteScriptInNewPwshSession -ScriptBlock $ScriptBlock
 }
 
 function SymlinkWTSettings {
@@ -169,6 +193,7 @@ function Main {
     InstallGit
     CloneRepo
     InstallApps
+    SymlinkPSSettingsInNewPwshSession
     SymlinkPSSettings
     SymlinkWTSettings
     SymlinkAlacrittySettings
