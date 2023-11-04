@@ -702,3 +702,334 @@
         }
     ]
 }
+{
+    "apps": [
+        {
+            "Info": "",
+            "Version": "23.01",
+            "Name": "7zip",
+            "Source": "main",
+            "Updated": "2023-07-06T16:05:01.5335554+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "19.00",
+            "Name": "7zip19.00-helper",
+            "Source": "main",
+            "Updated": "2023-11-04T06:49:44.0182317+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "0.12.3",
+            "Name": "alacritty",
+            "Source": "extras",
+            "Updated": "2023-11-04T06:45:59.1358104+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "1.60.110",
+            "Name": "brave",
+            "Source": "extras",
+            "Updated": "2023-11-04T06:46:27.1330121+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "5181-g5c1a3b00e",
+            "Name": "busybox",
+            "Source": "main",
+            "Updated": "2023-08-26T16:12:17.1055393+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "2.3.13",
+            "Name": "carnac",
+            "Source": "extras",
+            "Updated": "2023-02-25T07:29:00.5314635+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "1.5.12",
+            "Name": "clink",
+            "Source": "main",
+            "Updated": "2023-11-04T06:46:28.54737+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "3.11.2",
+            "Name": "dark",
+            "Source": "main",
+            "Updated": "2023-02-24T23:40:38.9419477+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "1.0.9022-16",
+            "Name": "discord",
+            "Source": "extras",
+            "Updated": "2023-11-04T06:46:41.4820407+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "24.0.7",
+            "Name": "docker",
+            "Source": "main",
+            "Updated": "2023-11-04T06:46:46.1796485+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "2.23.0",
+            "Name": "docker-compose",
+            "Source": "main",
+            "Updated": "2023-11-04T06:46:53.1767668+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "6.5.2",
+            "Name": "droidcam",
+            "Source": "extras",
+            "Updated": "2023-06-17T15:03:21.4516613+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "117.0.1",
+            "Name": "firefox",
+            "Source": null,
+            "Updated": "2023-11-03T20:32:11.8862345+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "0.43.0",
+            "Name": "fzf",
+            "Source": "main",
+            "Updated": "2023-11-04T06:46:54.3774231+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "2.42.0.2",
+            "Name": "git",
+            "Source": "main",
+            "Updated": "2023-09-03T22:17:36.6387897+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "119.0.6045.106",
+            "Name": "googlechrome",
+            "Source": "extras",
+            "Updated": "2023-11-04T06:47:11.7988135+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "0.50",
+            "Name": "innounp",
+            "Source": "main",
+            "Updated": "2023-02-25T07:46:34.6651335+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "17.0.4",
+            "Name": "llvm",
+            "Source": "main",
+            "Updated": "2023-11-04T06:48:08.1510354+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "23.5.2-0",
+            "Name": "miniconda3",
+            "Source": "extras",
+            "Updated": "2023-07-23T22:52:36.5972712+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "7.1.0",
+            "Name": "neofetch",
+            "Source": "main",
+            "Updated": "2023-02-24T23:51:34.1949172+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "0.9.4",
+            "Name": "neovim",
+            "Source": "main",
+            "Updated": "2023-11-04T06:48:18.8045582+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "21.1.0",
+            "Name": "nodejs",
+            "Source": "main",
+            "Updated": "2023-11-04T06:48:29.4067779+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "2.2.4",
+            "Name": "notion",
+            "Source": "extras",
+            "Updated": "2023-11-04T06:48:40.9652007+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "0.86.0",
+            "Name": "nu",
+            "Source": "main",
+            "Updated": "2023-11-04T06:48:45.2560685+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "18.22.0",
+            "Name": "oh-my-posh",
+            "Source": "main",
+            "Updated": "2023-11-04T06:49:00.9675224+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "16.0",
+            "Name": "postgresql",
+            "Source": "main",
+            "Updated": "2023-11-04T06:50:22.4074688+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "7.3.9",
+            "Name": "pwsh",
+            "Source": "main",
+            "Updated": "2023-11-04T06:59:46.0288124+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "3.12.0",
+            "Name": "python",
+            "Source": "main",
+            "Updated": "2023-10-17T09:58:18.5861292+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "4.3.1",
+            "Name": "R",
+            "Source": "<auto-generated>",
+            "Updated": "2023-11-04T07:32:52.4703051+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "2023.09.1-494",
+            "Name": "rstudio",
+            "Source": "extras",
+            "Updated": "2023-11-04T07:02:46.5869436+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "4.3",
+            "Name": "rufus",
+            "Source": "extras",
+            "Updated": "2023-11-04T07:02:49.1836117+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "1.73.0",
+            "Name": "rust",
+            "Source": "main",
+            "Updated": "2023-10-08T16:06:26.3233736+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "1.26.0",
+            "Name": "rustup",
+            "Source": "main",
+            "Updated": "2023-10-18T12:04:18.1080699+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "3.9.4",
+            "Name": "sharpkeys",
+            "Source": "extras",
+            "Updated": "2023-02-25T07:32:33.0317371+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "4.35.121",
+            "Name": "slack",
+            "Source": "extras",
+            "Updated": "2023-11-02T01:03:24.6102697+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "0.2020.01.26",
+            "Name": "sudo",
+            "Source": "main",
+            "Updated": "2023-02-24T23:32:26.6295766+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "14.36.32532.0",
+            "Name": "vcredist2022",
+            "Source": "extras",
+            "Updated": "2023-06-02T16:17:18.5424614+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "10.4.0",
+            "Name": "vieb",
+            "Source": "extras",
+            "Updated": "2023-11-04T07:03:14.7403117+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "0.13",
+            "Name": "vifm",
+            "Source": "extras",
+            "Updated": "2023-05-01T03:49:15.1927554+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "9.0.2087",
+            "Name": "vim-nightly",
+            "Source": "versions",
+            "Updated": "2023-11-04T07:03:25.5298452+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "1.83.1",
+            "Name": "vscode",
+            "Source": "extras",
+            "Updated": "2023-11-04T07:03:43.8082525+07:00"
+        },
+        {
+            "Info": "",
+            "Version": "2.5.1",
+            "Name": "winfetch",
+            "Source": "main",
+            "Updated": "2023-09-03T22:20:15.4148607+07:00"
+        },
+        {
+            "Info": "Global install",
+            "Version": "2.3.3",
+            "Name": "cousine-NF-Mono",
+            "Source": "nerd-fonts",
+            "Updated": "2023-02-24T23:41:29.075123+07:00"
+        }
+    ],
+    "buckets": [
+        {
+            "Name": "extras",
+            "Source": "https://github.com/ScoopInstaller/Extras",
+            "Updated": "2023-11-04T11:25:29+07:00",
+            "Manifests": 1888
+        },
+        {
+            "Name": "main",
+            "Source": "https://github.com/ScoopInstaller/Main",
+            "Updated": "2023-11-04T11:25:45+07:00",
+            "Manifests": 1262
+        },
+        {
+            "Name": "nerd-fonts",
+            "Source": "https://github.com/matthewjberger/scoop-nerd-fonts",
+            "Updated": "2023-10-29T20:18:55+07:00",
+            "Manifests": 296
+        },
+        {
+            "Name": "versions",
+            "Source": "https://github.com/ScoopInstaller/Versions",
+            "Updated": "2023-11-04T11:30:56+07:00",
+            "Manifests": 429
+        }
+    ]
+}
