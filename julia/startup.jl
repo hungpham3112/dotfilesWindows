@@ -1,1 +1,0 @@
-/home/vanellope/JuliaProjects/.config/startup.jl
