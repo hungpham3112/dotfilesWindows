@@ -5,7 +5,7 @@
 ### Windows (Powershell 5.1+)
 
 ```powershell
-Invoke-WebRequest https://raw.githubusercontent.com/hungpham3112/.dotfilesWindows/main/bin/install_apps.ps1 -UseBasicParsing | Invoke-Expression
+Invoke-WebRequest https://raw.githubusercontent.com/hungpham3112/dotfilesWindows/main/bin/install_apps.ps1 -UseBasicParsing | Invoke-Expression
 ```
 
 ## License
