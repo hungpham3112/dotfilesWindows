@@ -13,7 +13,7 @@ Set-PSReadLineKeyHandler -Chord 'Ctrl+d' -Function DeleteChar
 
 # Env
 $env:GIT_SSH = "C:\Windows\system32\OpenSSH\ssh.exe"
-$env:JULIA_NUM_THREADS = 4
+$env:JULIA_NUM_THREADS = 8
 
 # refreshenv is using to handle the bug with sync environment in pwsh.
 function refreshenv {
@@ -34,7 +34,3 @@ function mcd {
 
 # Alias
 Set-Alias rfenv refreshenv
-Set-Alias ll ls 
-Set-Alias g git
-Set-Alias grep findstr
-Set-Alias cls clear
