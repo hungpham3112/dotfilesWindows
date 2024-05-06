@@ -149,15 +149,15 @@ function SymlinkWTSettings {
 }
 
 function SymlinkAlacrittySettings {
-    $AlacrittySettingsPath = "$ENV:APPDATA\alacritty\alacritty.yml"
+    $AlacrittySettingsPath = "$ENV:APPDATA\alacritty\alacritty.toml"
     $AlacrittySettingsParent = Split-Path $AlacrittySettingsPath -Parent
     $AlacrittySettingsLeaf = Split-Path $AlacrittySettingsPath -Leaf
     if (![System.IO.File]::Exists($AlacrittySettingsPath)) {
         mkdir $AlacrittySettingsParent 1>$null 2>$null
-        sudo New-Item -ItemType symboliclink -Path $AlacrittySettingsParent -name $AlacrittySettingsLeaf -value $ConfigRoot\alacritty\alacritty.yml
+        sudo New-Item -ItemType symboliclink -Path $AlacrittySettingsParent -name $AlacrittySettingsLeaf -value $ConfigRoot\alacritty\alacritty.toml
     } else {
         Remove-Item $AlacrittySettingsPath 1>$null 2>$null
-        sudo New-Item -ItemType symboliclink -Path $AlacrittySettingsParent -name $AlacrittySettingsLeaf -value $ConfigRoot\alacritty\alacritty.yml
+        sudo New-Item -ItemType symboliclink -Path $AlacrittySettingsParent -name $AlacrittySettingsLeaf -value $ConfigRoot\alacritty\alacritty.toml
     }
     CheckSuccessful "Symlink" "Alacritty"
 }
