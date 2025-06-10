@@ -26,18 +26,6 @@ style = "Regular"
 x = 0
 y = 1
 
-[[keyboard.bindings]]
-action = "CreateNewWindow"
-key = "T"
-mode = "Vi|~Search"
-mods = "Shift|Control"
-
-[[keyboard.bindings]]
-action = "SpawnNewInstance"
-key = "N"
-mode = "Vi|~Search"
-mods = "Shift|Control"
-
 [scrolling]
 history = 10000
 multiplier = 3
