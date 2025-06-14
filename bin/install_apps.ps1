@@ -77,8 +77,8 @@ function PrintFinalMessage {
 }
 
 function InstallApps {
-    scoop install sudo
-    sudo scoop import $ConfigRoot/scoop/apps.json
+    scoop install gsudo
+    gsudo scoop import $ConfigRoot/scoop/apps.json
 }
 
 function CheckSuccessful {
@@ -96,15 +96,16 @@ function CheckSuccessful {
         Write-Host "$action $name settings fail."
     }
 }
+
 function SymlinkPSSettings {
     $ProfileParent = Split-Path $PROFILE -Parent
     $ProfileLeaf = Split-Path $PROFILE -Leaf
     if (![System.IO.File]::Exists($Profile)) {
         mkdir $ProfileParent 1>$null 2>$null
-        sudo New-Item -ItemType symboliclink -Path $ProfileParent -name $ProfileLeaf -value $ConfigRoot\powershell\Microsoft.PowerShell_profile.ps1
+        gsudo New-Item -ItemType symboliclink -Path $ProfileParent -name $ProfileLeaf -value $ConfigRoot\powershell\Microsoft.PowerShell_profile.ps1
     } else {
         Remove-Item $PROFILE 1>$null 2>$null
-        sudo New-Item -ItemType symboliclink -Path $ProfileParent -name $ProfileLeaf -value $ConfigRoot\powershell\Microsoft.PowerShell_profile.ps1
+        gsudo New-Item -ItemType symboliclink -Path $ProfileParent -name $ProfileLeaf -value $ConfigRoot\powershell\Microsoft.PowerShell_profile.ps1
     }
     CheckSuccessful "Symlink" "Windows Powershell"
 }
@@ -123,10 +124,10 @@ function SymlinkPSSettingsInNewPwshSession {
         $ProfileLeaf = Split-Path $PROFILE -Leaf
         if (![System.IO.File]::Exists($Profile)) {
             mkdir $ProfileParent 1>$null 2>$null
-            sudo New-Item -ItemType symboliclink -Path $ProfileParent -name $ProfileLeaf -value $ENV:USERPROFILE\.config\powershell\Microsoft.PowerShell_profile.ps1
+            gsudo New-Item -ItemType symboliclink -Path $ProfileParent -name $ProfileLeaf -value $ENV:USERPROFILE\.config\powershell\Microsoft.PowerShell_profile.ps1
         } else {
             Remove-Item $PROFILE 1>$null 2>$null
-            sudo New-Item -ItemType symboliclink -Path $ProfileParent -name $ProfileLeaf -value $ENV:USERPROFILE\.config\powershell\Microsoft.PowerShell_profile.ps1
+            gsudo New-Item -ItemType symboliclink -Path $ProfileParent -name $ProfileLeaf -value $ENV:USERPROFILE\.config\powershell\Microsoft.PowerShell_profile.ps1
         }
         exit
     }
@@ -140,10 +141,10 @@ function SymlinkWTSettings {
     $WTSettingsLeaf = Split-Path $WTSettingsPath -Leaf
     if (![System.IO.File]::Exists($WTSettingsPath)) {
         mkdir $WTSettingsParent 1>$null 2>$null
-        sudo New-Item -ItemType symboliclink -Path $WTSettingsParent -name $WTSettingsLeaf -value $ConfigRoot\powershell\settings.json
+        gsudo New-Item -ItemType symboliclink -Path $WTSettingsParent -name $WTSettingsLeaf -value $ConfigRoot\powershell\settings.json
     } else {
         # Force to overwrite the WindowsTerminal's default settings
-        sudo New-Item -ItemType symboliclink -Path $WTSettingsParent -name $WTSettingsLeaf -value $ConfigRoot\powershell\settings.json -Force
+        gsudo New-Item -ItemType symboliclink -Path $WTSettingsParent -name $WTSettingsLeaf -value $ConfigRoot\powershell\settings.json -Force
     }
     CheckSuccessful "Symlink" "Windows Terminal"
 }
@@ -154,21 +155,21 @@ function SymlinkAlacrittySettings {
     $AlacrittySettingsLeaf = Split-Path $AlacrittySettingsPath -Leaf
     if (![System.IO.File]::Exists($AlacrittySettingsPath)) {
         mkdir $AlacrittySettingsParent 1>$null 2>$null
-        sudo New-Item -ItemType symboliclink -Path $AlacrittySettingsParent -name $AlacrittySettingsLeaf -value $ConfigRoot\alacritty\alacritty.toml
+        gsudo New-Item -ItemType symboliclink -Path $AlacrittySettingsParent -name $AlacrittySettingsLeaf -value $ConfigRoot\alacritty\alacritty.toml
     } else {
         Remove-Item $AlacrittySettingsPath 1>$null 2>$null
-        sudo New-Item -ItemType symboliclink -Path $AlacrittySettingsParent -name $AlacrittySettingsLeaf -value $ConfigRoot\alacritty\alacritty.toml
+        gsudo New-Item -ItemType symboliclink -Path $AlacrittySettingsParent -name $AlacrittySettingsLeaf -value $ConfigRoot\alacritty\alacritty.toml
     }
     CheckSuccessful "Symlink" "Alacritty"
 }
 
 function ClonePythonRepo {
-    sudo git clone https://github.com/hungpham3112/PythonProjects.git $HOME/PythonProjects
+    gsudo git clone https://github.com/hungpham3112/PythonProjects.git $HOME/PythonProjects
     CheckSuccessful "Clone" "Python repository"
 }
 
 function CloneJuliaRepo {
-    sudo git clone https://github.com/hungpham3112/JuliaProjects.git $HOME/JuliaProjects
+    gsudo git clone https://github.com/hungpham3112/JuliaProjects.git $HOME/JuliaProjects
     CheckSuccessful "Clone" "Julia repository"
 }
 
@@ -178,12 +179,26 @@ function SymlinkJuliaStartupFile {
     $JuliaStartupFileLeaf = Split-Path $JuliaStartupFilePath -Leaf
     if (![System.IO.File]::Exists($JuliaStartupFilePath)) {
         mkdir $JuliaStartupFileParent 1>$null 2>$null
-        sudo New-Item -ItemType symboliclink -Path $JuliaStartupFileParent -name $JuliaStartupFileLeaf -value $ConfigRoot\julia\startup.jl
+        gsudo New-Item -ItemType symboliclink -Path $JuliaStartupFileParent -name $JuliaStartupFileLeaf -value $ConfigRoot\julia\startup.jl
     } else {
         Remove-Item $JuliaStartupFilePath 1>$null 2>$null
-        sudo New-Item -ItemType symboliclink -Path $JuliaStartupFileParent -name $JuliaStartupFileLeaf -value $ConfigRoot\julia\startup.jl
+        gsudo New-Item -ItemType symboliclink -Path $JuliaStartupFileParent -name $JuliaStartupFileLeaf -value $ConfigRoot\julia\startup.jl
     }
     CheckSuccessful "Symlink" "Julia startup file"
+}
+
+function SymlinkSpicetifySettings {
+    $SpicetifySettingsPath = "$ENV:APPDATA/spicetify/config-xpui.ini"
+    $SpicetifySettingsParent = Split-Path $SpicetifySettingsPath -Parent
+    $SpicetifySettingsLeaf = Split-Path $SpicetifySettingsPath -Leaf
+    if (![System.IO.File]::Exists($SpicetifySettingsPath)) {
+        mkdir $SpicetifySettingsParent 1>$null 2>$null
+        gsudo New-Item -ItemType symboliclink -Path $SpicetifySettingsParent -name $SpicetifySettingsLeaf -value $ConfigRoot\spicetify\config-xpui.ini
+    } else {
+        Remove-Item $SpicetifySettingsPath 1>$null 2>$null
+        gsudo New-Item -ItemType symboliclink -Path $SpicetifySettingsParent -name $SpicetifySettingsLeaf -value $ConfigRoot\spicetify\config-xpui.ini
+    }
+    CheckSuccessful "Symlink" "Spicetify"
 }
 
 function Main {
@@ -198,6 +213,7 @@ function Main {
     SymlinkWTSettings
     SymlinkAlacrittySettings
     SymlinkJuliaStartupFile
+    SymlinkSpicetifySettings
     CloneJuliaRepo
     ClonePythonRepo
     PrintFinalMessage
