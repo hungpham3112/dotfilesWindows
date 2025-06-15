@@ -1,4 +1,4 @@
-live_config_reload = true
+general.live_config_reload = true
 
 [cursor.style]
 blinking = "Always"
@@ -30,7 +30,7 @@ y = 1
 history = 10000
 multiplier = 3
 
-[shell]
+[terminal.shell]
 args = ["-nologo"]
 program = "pwsh"
 
