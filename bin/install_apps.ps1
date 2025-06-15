@@ -180,16 +180,24 @@ function SymlinkPSSettingsInNewPwshSession {
 
 function SymlinkWTSettings {
     Write-Host "Creating symlinks for Windows Terminal Settings..." -ForegroundColor Green
-    $WTSettingsPath = "$ENV:LOCALAPPDATA\Microsoft\Windows Terminal\settings.json"
-    $WTSettingsParent = Split-Path $WTSettingsPath -Parent
-    $WTSettingsLeaf = Split-Path $WTSettingsPath -Leaf
-    if (![System.IO.File]::Exists($WTSettingsPath)) {
-        mkdir $WTSettingsParent 1>$null 2>$null
-        gsudo New-Item -ItemType symboliclink -Path $WTSettingsParent -name $WTSettingsLeaf -value $ConfigRoot\powershell\settings.json
-    } else {
-        # Force to overwrite the WindowsTerminal's default settings
-        gsudo New-Item -ItemType symboliclink -Path $WTSettingsParent -name $WTSettingsLeaf -value $ConfigRoot\powershell\settings.json -Force
+
+    $TargetSettings = "$ConfigRoot\powershell\settings.json"
+
+    $WTSettingsPaths = @(
+        "$ENV:LOCALAPPDATA\Microsoft\Windows Terminal\settings.json",
+        "$ENV:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+    )
+
+    foreach ($WTSettingsPath in $WTSettingsPaths) {
+        $WTSettingsParent = Split-Path $WTSettingsPath -Parent
+        $WTSettingsLeaf = Split-Path $WTSettingsPath -Leaf
+
+        mkdir $WTSettingsParent -Force | Out-Null
+
+        sudo powershell -Command "Remove-Item -Path "$WTSettingsPath" -Force -ErrorAction SilentlyContinue"
+        sudo powershell -Command "New-Item -ItemType SymbolicLink -Path "$WTSettingsParent" -Name "$WTSettingsLeaf" -Value "$TargetSettings" -Force"
     }
+
     CheckSuccessful "Symlink" "Windows Terminal Settings"
 }
 
