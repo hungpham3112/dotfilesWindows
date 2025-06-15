@@ -21,7 +21,23 @@ Welcome to Apps Installer <3
     Write-Host $Logo -ForegroundColor Green
 }
 
-function CloneRepo {
+function CheckSuccessful {
+    param (
+        [string] $action,
+        [string] $name
+    )
+    # $? is a variable return the state of the latest command
+    # i.e: True if the previous command run successfully and vice versa.
+    if ($?) {
+        Write-Host "[Success] " -ForegroundColor Green -NoNewline
+        Write-Host "$action $name successfully."
+    } else {
+        Write-Host "[Fail] " -ForegroundColor Red -NoNewline
+        Write-Host "$action $name fail."
+    }
+}
+
+function CloneDotfiles {
     if (![System.IO.Directory]::Exists($ConfigRoot)) {
         git clone https://github.com/hungpham3112/.dotfilesWindows.git $ConfigRoot
     } else {
@@ -37,7 +53,7 @@ function InstallScoop {
         Write-Host "Scoop is already installed."
     } else {
         try {
-            Write-Host "Installing scoop..."
+            Write-Host "Installing scoop..." -ForegroundColor Green -NoNewline
             # Handle installation in administrator privilege
             if (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(`
             [Security.Principal.WindowsBuiltInRole] "Administrator")) {
@@ -47,6 +63,7 @@ function InstallScoop {
             } else {
                 iwr -useb get.scoop.sh | iex
             }
+            CheckSuccessful "Install" "Scoop"
         }
         catch {
             Write-Host "[Fail] " -ForegroundColor Red -NoNewline
@@ -62,8 +79,10 @@ function InstallGit {
         Write-Host "Git is already installed."
         git config --system --unset credential.helper >$null 2>$null
     } else {
+        Write-Host "Installing git..." -ForegroundColor Green 
         scoop install git >$null
         git config --system --unset credential.helper >$null 2>$null
+        CheckSuccessful "Install" "Git"
     }
 }
 
@@ -81,23 +100,9 @@ function InstallApps {
     gsudo scoop import $ConfigRoot/scoop/apps.json
 }
 
-function CheckSuccessful {
-    param (
-        [string] $action,
-        [string] $name
-    )
-    # $? is a variable return the state of the latest command
-    # i.e: True if the previous command run successfully and vice versa.
-    if ($?) {
-        Write-Host "[Success] " -ForegroundColor Green -NoNewline
-        Write-Host "$action $name settings successfully."
-    } else {
-        Write-Host "[Fail] " -ForegroundColor Red -NoNewline
-        Write-Host "$action $name settings fail."
-    }
-}
 
 function SymlinkPSSettings {
+    Write-Host "Creating symlinks for Windows Powershell Settings..." -ForegroundColor Green 
     $ProfileParent = Split-Path $PROFILE -Parent
     $ProfileLeaf = Split-Path $PROFILE -Leaf
     if (![System.IO.File]::Exists($Profile)) {
@@ -107,32 +112,70 @@ function SymlinkPSSettings {
         Remove-Item $PROFILE 1>$null 2>$null
         gsudo New-Item -ItemType symboliclink -Path $ProfileParent -name $ProfileLeaf -value $ConfigRoot\powershell\Microsoft.PowerShell_profile.ps1
     }
-    CheckSuccessful "Symlink" "Windows Powershell"
+    CheckSuccessful "Symlink" "Windows Powershell Settings"
 }
 
 function ExecuteScriptInNewPwshSession {
     param (
         [scriptblock] $ScriptBlock
     )
-
-    Start-Process pwsh.exe -ArgumentList "-NoProfile -NoExit -Command & {$ScriptBlock}"
+    $proc = Start-Process pwsh.exe `
+        -ArgumentList "-NoProfile", "-Command", "& { $ScriptBlock }" `
+        -Wait -PassThru
+    return $proc.ExitCode
 }
 
 function SymlinkPSSettingsInNewPwshSession {
+    Write-Host "Creating symlinks for Powershell Settings..." -ForegroundColor Green
+
     $ScriptBlock = {
-        $ProfileParent = Split-Path $PROFILE -Parent
-        $ProfileLeaf = Split-Path $PROFILE -Leaf
-        if (![System.IO.File]::Exists($Profile)) {
-            mkdir $ProfileParent 1>$null 2>$null
-            gsudo New-Item -ItemType symboliclink -Path $ProfileParent -name $ProfileLeaf -value $ENV:USERPROFILE\.config\powershell\Microsoft.PowerShell_profile.ps1
-        } else {
-            Remove-Item $PROFILE 1>$null 2>$null
-            gsudo New-Item -ItemType symboliclink -Path $ProfileParent -name $ProfileLeaf -value $ENV:USERPROFILE\.config\powershell\Microsoft.PowerShell_profile.ps1
+        Set-StrictMode -Version Latest
+        $ErrorActionPreference = 'Stop'
+        
+        try {
+            $ProfileParent = Split-Path $PROFILE -Parent
+            $ProfileLeaf   = Split-Path $PROFILE -Leaf
+            $Target        = Join-Path $env:USERPROFILE '.config\powershell\Microsoft.PowerShell_profile.ps1'
+
+            if (-not $ProfileParent -or -not $ProfileLeaf -or -not $Target) {
+                throw "One or more required variables are null or empty"
+            }
+
+            if (-not (Test-Path $ProfileParent)) {
+                New-Item -ItemType Directory -Path $ProfileParent -Force
+            }
+
+            if (Test-Path $PROFILE) {
+                Remove-Item $PROFILE -Force
+            }
+
+            gsudo New-Item -ItemType SymbolicLink `
+                -Path  $ProfileParent `
+                -Name  $ProfileLeaf `
+                -Value $Target `
+                -Force
+
+            if ($LASTEXITCODE -ne 0) {
+                throw "gsudo command failed with exit code: $LASTEXITCODE"
+            }
+
+            if (-not (Test-Path $PROFILE)) {
+                throw "Symlink creation failed - profile path does not exist"
+            }
+
+            exit 0
         }
-        exit
+        catch {
+            exit 1
+        }
     }
-    CheckSuccessful "Symlink" "Powershell"
-    ExecuteScriptInNewPwshSession -ScriptBlock $ScriptBlock
+
+    $exitCode = ExecuteScriptInNewPwshSession -ScriptBlock $ScriptBlock
+    if ($exitCode -ne 0) {
+        cmd /c exit $exitCode
+    }
+
+    CheckSuccessful "Symlink" "Powershell Settings"
 }
 
 function SymlinkWTSettings {
@@ -146,7 +189,7 @@ function SymlinkWTSettings {
         # Force to overwrite the WindowsTerminal's default settings
         gsudo New-Item -ItemType symboliclink -Path $WTSettingsParent -name $WTSettingsLeaf -value $ConfigRoot\powershell\settings.json -Force
     }
-    CheckSuccessful "Symlink" "Windows Terminal"
+    CheckSuccessful "Symlink" "Windows Terminal Settings"
 }
 
 function SymlinkAlacrittySettings {
@@ -160,7 +203,7 @@ function SymlinkAlacrittySettings {
         Remove-Item $AlacrittySettingsPath 1>$null 2>$null
         gsudo New-Item -ItemType symboliclink -Path $AlacrittySettingsParent -name $AlacrittySettingsLeaf -value $ConfigRoot\alacritty\alacritty.toml
     }
-    CheckSuccessful "Symlink" "Alacritty"
+    CheckSuccessful "Symlink" "Alacritty Settings"
 }
 
 function ClonePythonRepo {
@@ -201,12 +244,33 @@ function SymlinkSpicetifySettings {
     CheckSuccessful "Symlink" "Spicetify"
 }
 
+function InstallSpicetifyMarketplace {
+    iwr -useb https://raw.githubusercontent.com/spicetify/marketplace/main/resources/install.ps1 | iex
+}
+
+function RemoveBloatware {
+    $Win11DebloatRoot = Join-Path $ENV:TEMP "\Win11Debloat"
+    Copy-Item $ConfigRoot\win11debloat\CustomAppsList $Win11DebloatRoot -Force
+
+    $fixedBlock = @'
+$debloatScript = "$env:TEMP\Win11Debloat\Win11Debloat.ps1"
+$lines = Get-Content $debloatScript
+if ($lines.Count -gt 0) {
+    $lines[0..($lines.Count - 2)] | Set-Content $debloatScript
+}
+'@
+
+    $script = Invoke-RestMethod "https://debloat.raphi.re/"
+    $patchedScript = $script -replace '(?ms)(^\s*Write-Output\s+"> Running Win11Debloat\.\.\."\s*\r?\n)', "`$1$fixedBlock`r`n"   
+    & ([scriptblock]::Create($patchedGetScript)) -RemoveAppsCustom
+}
+
 function Main {
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
     PrintLogo
     InstallScoop
     InstallGit
-    CloneRepo
+    CloneDotfiles
     InstallApps
     SymlinkPSSettingsInNewPwshSession
     SymlinkPSSettings
@@ -214,6 +278,7 @@ function Main {
     SymlinkAlacrittySettings
     SymlinkJuliaStartupFile
     SymlinkSpicetifySettings
+    RemoveBloatware
     CloneJuliaRepo
     ClonePythonRepo
     PrintFinalMessage
