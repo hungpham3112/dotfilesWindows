@@ -3,251 +3,272 @@
         {
             "Name": "main",
             "Source": "https://github.com/ScoopInstaller/Main",
-            "Updated": "2024-05-27T03:25:01+07:00",
-            "Manifests": 1325
+            "Updated": "2025-06-15T07:45:09+07:00",
+            "Manifests": 1391
         },
         {
             "Name": "extras",
             "Source": "https://github.com/ScoopInstaller/Extras",
-            "Updated": "2024-05-27T03:34:44+07:00",
-            "Manifests": 2026
+            "Updated": "2025-06-15T11:30:25+07:00",
+            "Manifests": 2167
         },
         {
             "Name": "versions",
             "Source": "https://github.com/ScoopInstaller/Versions",
-            "Updated": "2024-05-27T03:27:05+07:00",
-            "Manifests": 462
+            "Updated": "2025-06-15T11:48:31+07:00",
+            "Manifests": 500
         },
         {
             "Name": "nerd-fonts",
             "Source": "https://github.com/matthewjberger/scoop-nerd-fonts",
-            "Updated": "2024-05-26T22:20:11+07:00",
-            "Manifests": 336
+            "Updated": "2025-06-09T09:05:09+07:00",
+            "Manifests": 367
         }
     ],
     "apps": [
         {
-            "Name": "7zip",
+            "Updated": "2025-06-14T22:22:49.8836603+07:00",
             "Source": "main",
-            "Version": "24.05",
-            "Updated": "2024-05-19T21:44:25.5881896+07:00",
+            "Version": "24.09",
+            "Name": "7zip",
             "Info": ""
         },
         {
-            "Name": "7zip19.00-helper",
+            "Updated": "2025-06-14T22:26:53.4987939+07:00",
             "Source": "main",
             "Version": "19.00",
-            "Updated": "2023-12-19T04:28:57.6445776+07:00",
+            "Name": "7zip19.00-helper",
             "Info": ""
         },
         {
-            "Name": "alacritty",
+            "Updated": "2025-06-14T22:26:59.9474419+07:00",
             "Source": "extras",
-            "Version": "0.13.2",
-            "Updated": "2024-05-06T18:15:12.6444101+07:00",
+            "Version": "0.15.1",
+            "Name": "alacritty",
             "Info": ""
         },
         {
-            "Name": "busybox",
+            "Updated": "2025-06-14T22:27:06.3876351+07:00",
             "Source": "main",
-            "Version": "5301-gda71f7c57",
-            "Updated": "2024-02-22T20:25:35.7958756+07:00",
+            "Version": "5579-g5749feb35",
+            "Name": "busybox",
             "Info": ""
         },
         {
-            "Name": "carnac",
+            "Updated": "2025-06-14T22:27:10.6416127+07:00",
             "Source": "extras",
             "Version": "2.3.13",
-            "Updated": "2023-12-19T04:29:38.5813641+07:00",
+            "Name": "carnac",
             "Info": ""
         },
         {
+            "Updated": "2025-06-14T22:27:13.7904493+07:00",
+            "Source": "main",
+            "Version": "1.7.20",
             "Name": "clink",
-            "Source": "main",
-            "Version": "1.6.14",
-            "Updated": "2024-05-26T21:41:57.6463899+07:00",
             "Info": ""
         },
         {
+            "Updated": "2025-06-14T22:27:57.7871573+07:00",
+            "Source": "main",
+            "Version": "4.0.3",
             "Name": "cmake",
-            "Source": "main",
-            "Version": "3.29.3",
-            "Updated": "2024-05-19T21:46:43.1923793+07:00",
             "Info": ""
         },
         {
-            "Name": "cousine-NF-Mono",
+            "Updated": "2025-06-14T22:28:24.1038359+07:00",
             "Source": "nerd-fonts",
-            "Version": "3.2.1",
-            "Updated": "2024-05-19T21:47:33.9507196+07:00",
+            "Version": "3.4.0",
+            "Name": "cousine-NF-Mono",
             "Info": ""
         },
         {
+            "Updated": "2025-06-14T22:28:25.8334953+07:00",
+            "Source": "main",
+            "Version": "3.14.1",
             "Name": "dark",
-            "Source": "main",
-            "Version": "3.14",
-            "Updated": "2024-04-11T16:03:27.2773336+07:00",
             "Info": ""
         },
         {
-            "Name": "firefox",
-            "Source": null,
-            "Version": "120.0.1",
-            "Updated": "2024-05-26T22:08:12.2594651+07:00",
-            "Info": ""
-        },
-        {
-            "Name": "git",
-            "Source": "main",
-            "Version": "2.45.1",
-            "Updated": "2024-05-19T21:50:23.2767638+07:00",
-            "Info": ""
-        },
-        {
-            "Name": "googlechrome",
+            "Updated": "2025-06-15T12:58:42.317972+07:00",
             "Source": "extras",
-            "Version": "123.0.6312.86",
-            "Updated": "2024-04-02T18:25:21.8714199+07:00",
+            "Version": "1.0.9188-21",
+            "Name": "discord",
             "Info": ""
         },
         {
-            "Name": "innounp",
+            "Updated": "2025-06-14T22:52:55.547626+07:00",
+            "Source": "extras",
+            "Version": "139.0.4",
+            "Name": "firefox",
+            "Info": ""
+        },
+        {
+            "Updated": "2025-06-14T22:23:56.7533406+07:00",
             "Source": "main",
-            "Version": "0.50",
-            "Updated": "2023-12-19T04:30:25.1139314+07:00",
+            "Version": "2.49.0",
+            "Name": "git",
             "Info": ""
         },
         {
-            "Name": "make",
+            "Updated": "2025-06-15T04:35:19.5169502+07:00",
+            "Source": "extras",
+            "Version": "2.6.1",
+            "Name": "git-credential-manager",
+            "Info": ""
+        },
+        {
+            "Updated": "2025-06-14T22:28:49.9436145+07:00",
+            "Source": "extras",
+            "Version": "137.0.7151.104",
+            "Name": "googlechrome",
+            "Info": ""
+        },
+        {
+            "Updated": "2025-06-15T00:18:17.56763+07:00",
+            "Source": "main",
+            "Version": "2.6.0",
+            "Name": "gsudo",
+            "Info": ""
+        },
+        {
+            "Updated": "2025-06-14T22:28:50.9480382+07:00",
+            "Source": "main",
+            "Version": "2.64.4",
+            "Name": "innounp",
+            "Info": ""
+        },
+        {
+            "Updated": "2025-06-14T22:30:15.1149371+07:00",
             "Source": "main",
             "Version": "4.4.1",
-            "Updated": "2024-02-23T21:49:30.0814145+07:00",
+            "Name": "make",
             "Info": ""
         },
         {
+            "Updated": "2025-06-15T05:25:08.6468301+07:00",
+            "Source": "extras",
+            "Version": "24.11.0-0",
             "Name": "mambaforge",
-            "Source": "extras",
-            "Version": "24.3.0-0",
-            "Updated": "2024-05-26T22:20:17.374132+07:00",
             "Info": ""
         },
         {
-            "Name": "neofetch",
+            "Updated": "2025-06-14T22:32:04.2592018+07:00",
             "Source": "main",
-            "Version": "7.1.0",
-            "Updated": "2023-12-19T04:32:14.8092401+07:00",
-            "Info": ""
-        },
-        {
+            "Version": "24.2.0",
             "Name": "nodejs",
-            "Source": "main",
-            "Version": "22.2.0",
-            "Updated": "2024-05-19T22:09:29.2178197+07:00",
             "Info": ""
         },
         {
+            "Updated": "2025-06-14T22:32:20.4087878+07:00",
+            "Source": "extras",
+            "Version": "4.13.0",
             "Name": "notion",
-            "Source": "extras",
-            "Version": "3.2.1",
-            "Updated": "2024-04-11T04:09:46.6623586+07:00",
             "Info": ""
         },
         {
+            "Updated": "2025-06-14T22:32:38.3265662+07:00",
+            "Source": "main",
+            "Version": "26.7.0",
             "Name": "oh-my-posh",
-            "Source": "main",
-            "Version": "20.2.1",
-            "Updated": "2024-05-26T21:42:02.8723709+07:00",
             "Info": ""
         },
         {
+            "Updated": "2025-06-14T22:33:37.8240772+07:00",
+            "Source": "main",
+            "Version": "7.5.1",
             "Name": "pwsh",
-            "Source": "main",
-            "Version": "7.4.2",
-            "Updated": "2024-05-06T18:39:22.0541813+07:00",
             "Info": ""
         },
         {
-            "Name": "python",
-            "Source": "main",
-            "Version": "3.12.3",
-            "Updated": "2024-04-24T17:41:56.3875478+07:00",
-            "Info": ""
-        },
-        {
-            "Name": "rufus",
+            "Updated": "2025-06-14T22:34:13.2939602+07:00",
             "Source": "extras",
-            "Version": "4.4",
-            "Updated": "2024-02-22T20:39:04.1622468+07:00",
+            "Version": "4.8",
+            "Name": "rufus",
             "Info": ""
         },
         {
-            "Name": "rustup",
+            "Updated": "2025-06-14T22:35:35.1641045+07:00",
             "Source": "main",
-            "Version": "1.27.1",
-            "Updated": "2024-05-19T22:27:37.8364679+07:00",
+            "Version": "1.28.2",
+            "Name": "rustup",
             "Info": ""
         },
         {
-            "Name": "sharpkeys",
+            "Updated": "2025-06-14T22:35:37.4939124+07:00",
             "Source": "extras",
             "Version": "3.9.4",
-            "Updated": "2023-12-19T04:39:42.3326804+07:00",
+            "Name": "sharpkeys",
             "Info": ""
         },
         {
-            "Name": "sudo",
+            "Updated": "2025-06-14T23:48:50.1233213+07:00",
             "Source": "main",
-            "Version": "0.2020.01.26",
-            "Updated": "2023-12-19T04:27:26.6333009+07:00",
+            "Version": "2.40.11",
+            "Name": "spicetify-cli",
             "Info": ""
         },
         {
+            "Updated": "2025-06-14T22:52:52.3905652+07:00",
+            "Source": "extras",
+            "Version": "1.2.65.255.g85e641b4",
+            "Name": "spotify",
+            "Info": ""
+        },
+        {
+            "Updated": "2025-06-14T23:00:40.3705724+07:00",
+            "Source": "extras",
+            "Version": "5.15.4",
+            "Name": "telegram",
+            "Info": ""
+        },
+        {
+            "Updated": "2025-06-14T22:35:44.6990832+07:00",
+            "Source": "extras",
+            "Version": "14.44.35208.0",
             "Name": "vcredist2022",
-            "Source": "extras",
-            "Version": "14.38.33135.0",
-            "Updated": "2024-02-22T20:46:41.9161244+07:00",
             "Info": ""
         },
         {
+            "Updated": "2025-06-14T22:36:31.2472665+07:00",
+            "Source": "extras",
+            "Version": "12.3.0",
             "Name": "vieb",
-            "Source": "extras",
-            "Version": "11.0.0",
-            "Updated": "2023-12-19T04:40:29.7284091+07:00",
             "Info": ""
         },
         {
+            "Updated": "2025-06-14T22:36:34.0716618+07:00",
+            "Source": "extras",
+            "Version": "0.14.3",
             "Name": "vifm",
-            "Source": "extras",
-            "Version": "0.13",
-            "Updated": "2023-12-19T04:40:32.1678052+07:00",
             "Info": ""
         },
         {
-            "Name": "vim-nightly",
+            "Updated": "2025-06-14T22:36:55.0223705+07:00",
             "Source": "versions",
-            "Version": "9.1.0445",
-            "Updated": "2024-05-26T21:42:11.0045918+07:00",
+            "Version": "9.1.1457",
+            "Name": "vim-nightly",
             "Info": ""
         },
         {
-            "Name": "vscode",
+            "Updated": "2025-06-14T22:38:31.1440525+07:00",
             "Source": "extras",
-            "Version": "1.87.2",
-            "Updated": "2024-04-11T16:12:57.2455268+07:00",
+            "Version": "1.101.0",
+            "Name": "vscode",
             "Info": ""
         },
         {
-            "Name": "winfetch",
+            "Updated": "2025-06-14T22:38:32.6576826+07:00",
             "Source": "main",
             "Version": "2.5.1",
-            "Updated": "2023-12-19T04:41:02.2199045+07:00",
+            "Name": "winfetch",
             "Info": ""
         },
         {
-            "Name": "cousine-NF-Mono",
+            "Updated": "2025-06-14T09:30:27.1427617+07:00",
             "Source": "nerd-fonts",
-            "Version": "3.1.1",
-            "Updated": "2023-12-19T04:36:57.606594+07:00",
+            "Version": "3.4.0",
+            "Name": "cousine-NF-Mono",
             "Info": "Global install"
         }
     ]
