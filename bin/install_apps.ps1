@@ -179,6 +179,7 @@ function SymlinkPSSettingsInNewPwshSession {
 }
 
 function SymlinkWTSettings {
+    Write-Host "Creating symlinks for Windows Terminal Settings..." -ForegroundColor Green
     $WTSettingsPath = "$ENV:LOCALAPPDATA\Microsoft\Windows Terminal\settings.json"
     $WTSettingsParent = Split-Path $WTSettingsPath -Parent
     $WTSettingsLeaf = Split-Path $WTSettingsPath -Leaf
@@ -193,6 +194,7 @@ function SymlinkWTSettings {
 }
 
 function SymlinkAlacrittySettings {
+    Write-Host "Creating symlinks for Alacritty Settings..." -ForegroundColor Green
     $AlacrittySettingsPath = "$ENV:APPDATA\alacritty\alacritty.toml"
     $AlacrittySettingsParent = Split-Path $AlacrittySettingsPath -Parent
     $AlacrittySettingsLeaf = Split-Path $AlacrittySettingsPath -Leaf
@@ -207,16 +209,19 @@ function SymlinkAlacrittySettings {
 }
 
 function ClonePythonRepo {
+    Write-Host "Cloning PythonProjects repo..." -ForegroundColor Green
     gsudo git clone https://github.com/hungpham3112/PythonProjects.git $HOME/PythonProjects
     CheckSuccessful "Clone" "Python repository"
 }
 
 function CloneJuliaRepo {
+    Write-Host "Cloning JuliaProjects repo..." -ForegroundColor Green
     gsudo git clone https://github.com/hungpham3112/JuliaProjects.git $HOME/JuliaProjects
     CheckSuccessful "Clone" "Julia repository"
 }
 
 function SymlinkJuliaStartupFile {
+    Write-Host "Creating symlinks for Julia Startup File..." -ForegroundColor Green
     $JuliaStartupFilePath = "$ENV:USERPROFILE/.julia/config/startup.jl"
     $JuliaStartupFileParent = Split-Path $JuliaStartupFilePath -Parent
     $JuliaStartupFileLeaf = Split-Path $JuliaStartupFilePath -Leaf
@@ -231,6 +236,7 @@ function SymlinkJuliaStartupFile {
 }
 
 function SymlinkSpicetifySettings {
+    Write-Host "Creating symlinks for Spicetify Settings..." -ForegroundColor Green
     $SpicetifySettingsPath = "$ENV:APPDATA/spicetify/config-xpui.ini"
     $SpicetifySettingsParent = Split-Path $SpicetifySettingsPath -Parent
     $SpicetifySettingsLeaf = Split-Path $SpicetifySettingsPath -Leaf
@@ -244,11 +250,14 @@ function SymlinkSpicetifySettings {
     CheckSuccessful "Symlink" "Spicetify"
 }
 
-function InstallSpicetifyMarketplace {
+function InstallSpicetifyMarketplace { 
+    Write-Host "Installing Spicetify Marketplace..." -ForegroundColor Green -NoNewline
     iwr -useb https://raw.githubusercontent.com/spicetify/marketplace/main/resources/install.ps1 | iex
+    CheckSuccessful "Install" "Spicetify Marketplace"
 }
 
 function RemoveBloatware {
+    Write-Host "Removing Bloatware..." -ForegroundColor Green -NoNewline
     $Win11DebloatRoot = Join-Path $ENV:TEMP "\Win11Debloat"
     Copy-Item $ConfigRoot\win11debloat\CustomAppsList $Win11DebloatRoot -Force
 
@@ -260,9 +269,10 @@ if ($lines.Count -gt 0) {
 }
 '@
 
-    $script = Invoke-RestMethod "https://debloat.raphi.re/"
+    $script = (irm "https://debloat.raphi.re/")
     $patchedScript = $script -replace '(?ms)(^\s*Write-Output\s+"> Running Win11Debloat\.\.\."\s*\r?\n)', "`$1$fixedBlock`r`n"   
-    & ([scriptblock]::Create($patchedGetScript)) -RemoveAppsCustom
+    & ([scriptblock]::Create($patchedScript)) -RemoveAppsCustom
+    CheckSuccessful "Remove" "Bloatware"
 }
 
 function Main {
