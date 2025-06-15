@@ -251,13 +251,13 @@ function SymlinkSpicetifySettings {
 }
 
 function InstallSpicetifyMarketplace { 
-    Write-Host "Installing Spicetify Marketplace..." -ForegroundColor Green -NoNewline
+    Write-Host "Installing Spicetify Marketplace..." -ForegroundColor Green
     iwr -useb https://raw.githubusercontent.com/spicetify/marketplace/main/resources/install.ps1 | iex
     CheckSuccessful "Install" "Spicetify Marketplace"
 }
 
 function RemoveBloatware {
-    Write-Host "Removing Bloatware..." -ForegroundColor Green -NoNewline
+    Write-Host "Removing Bloatware..." -ForegroundColor Green
     $Win11DebloatRoot = Join-Path $ENV:TEMP "\Win11Debloat"
     Copy-Item $ConfigRoot\win11debloat\CustomAppsList $Win11DebloatRoot -Force
 
@@ -268,10 +268,15 @@ if ($lines.Count -gt 0) {
     $lines[0..($lines.Count - 2)] | Set-Content $debloatScript
 }
 '@
-
     $script = (irm "https://debloat.raphi.re/")
     $patchedScript = $script -replace '(?ms)(^\s*Write-Output\s+"> Running Win11Debloat\.\.\."\s*\r?\n)', "`$1$fixedBlock`r`n"   
-    & ([scriptblock]::Create($patchedScript)) -RemoveAppsCustom
+
+    $patchedPath = "$env:TEMP\Win11Debloat\PatchedWin11Debloat.ps1"
+    Set-Content -Path $patchedPath -Value $patchedScript -Encoding UTF8
+
+    # Start a new PowerShell process to run the script silently
+    Start-Process powershell.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$patchedPath`" -RemoveAppsCustom" -WindowStyle Hidden -Wait
+
     CheckSuccessful "Remove" "Bloatware"
 }
 
