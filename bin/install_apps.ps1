@@ -97,6 +97,7 @@ function PrintFinalMessage {
 
 function InstallApps {
     scoop install gsudo
+    gsudo config ForceAttachedConsole true
     gsudo scoop import $ConfigRoot/scoop/apps.json
 }
 
@@ -290,21 +291,21 @@ if ($lines.Count -gt 0) {
 
 function Main {
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-    PrintLogo
-    InstallScoop
-    InstallGit
-    CloneDotfiles
-    InstallApps
-    SymlinkPSSettingsInNewPwshSession
-    SymlinkPSSettings
-    SymlinkWTSettings
-    SymlinkAlacrittySettings
-    SymlinkJuliaStartupFile
-    SymlinkSpicetifySettings
+    # PrintLogo
+    # InstallScoop
+    # InstallGit
+    # CloneDotfiles
+    # InstallApps
+    # SymlinkPSSettingsInNewPwshSession
+    # SymlinkPSSettings
+    # SymlinkWTSettings
+    # SymlinkAlacrittySettings
+    # SymlinkJuliaStartupFile
+    # SymlinkSpicetifySettings
     RemoveBloatware
-    CloneJuliaRepo
-    ClonePythonRepo
-    PrintFinalMessage
+    # CloneJuliaRepo
+    # ClonePythonRepo
+    # PrintFinalMessage
 }
 
 Main
