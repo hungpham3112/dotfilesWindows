@@ -267,7 +267,14 @@ function InstallSpicetifyMarketplace {
 
 function RemoveBloatware {
     Write-Host "Removing Bloatware..." -ForegroundColor Green
-    $Win11DebloatRoot = Join-Path $ENV:TEMP "\Win11Debloat"
+
+    $Win11DebloatRoot = Join-Path $env:TEMP "Win11Debloat"
+    if (Test-Path $Win11DebloatRoot -PathType Leaf) {
+        Remove-Item $Win11DebloatRoot -Force
+    }
+    if (-not (Test-Path $Win11DebloatRoot -PathType Container)) {
+        New-Item -ItemType Directory -Path $Win11DebloatRoot -Force | Out-Null
+    }
     Copy-Item $ConfigRoot\win11debloat\CustomAppsList $Win11DebloatRoot -Force
 
     $fixedBlock = @'
@@ -284,28 +291,28 @@ if ($lines.Count -gt 0) {
     Set-Content -Path $patchedPath -Value $patchedScript -Encoding UTF8
 
     # Start a new PowerShell process to run the script silently
-    Start-Process powershell.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$patchedPath`" -RemoveAppsCustom" -WindowStyle Hidden -Wait
+    Start-Process powershell.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$patchedPath`" -RemoveAppsCustom -DisableFastStartup -ShowHiddenFolders -ShowKnownFileExt -EnableDarkMode  -HideSearchTb  -HideTaskview -HideChat -DisableWidgets -EnableEndTask -HideHome -HideGallery -ExplorerToHome  -DisableRecall  -DisableCopilot  -DisableBing -DisableSettingsHome -DisableSettings365Ads -DisableLockscreenTips -DisableTelemetry -DisableDesktopSpotlight  -DisableSuggestions -DisableStartPhoneLink -DisableStartRecommended -ClearStartAllUsers -DisableDVR -RemoveGamingApps  -RemoveDevApps -RemoveCommApps -Silent" -WindowStyle Hidden -Wait
 
     CheckSuccessful "Remove" "Bloatware"
 }
 
 function Main {
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-    # PrintLogo
-    # InstallScoop
-    # InstallGit
-    # CloneDotfiles
-    # InstallApps
-    # SymlinkPSSettingsInNewPwshSession
-    # SymlinkPSSettings
-    # SymlinkWTSettings
-    # SymlinkAlacrittySettings
-    # SymlinkJuliaStartupFile
-    # SymlinkSpicetifySettings
+    PrintLogo
+    InstallScoop
+    InstallGit
+    CloneDotfiles
+    InstallApps
+    SymlinkPSSettingsInNewPwshSession
+    SymlinkPSSettings
+    SymlinkWTSettings
+    SymlinkAlacrittySettings
+    SymlinkJuliaStartupFile
+    SymlinkSpicetifySettings
     RemoveBloatware
-    # CloneJuliaRepo
-    # ClonePythonRepo
-    # PrintFinalMessage
+    CloneJuliaRepo
+    ClonePythonRepo
+    PrintFinalMessage
 }
 
 Main
