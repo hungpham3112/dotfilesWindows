@@ -77,11 +77,11 @@ function InstallGit {
     if (Get-Command git -ErrorAction SilentlyContinue) {
         Write-Host "[Success] " -ForegroundColor Green -NoNewline
         Write-Host "Git is already installed."
-        git config --system --unset credential.helper >$null 2>$null
+        git config --global credential.helper manager >$null 2>$null
     } else {
         Write-Host "Installing git..." -ForegroundColor Green 
         scoop install git >$null
-        git config --system --unset credential.helper >$null 2>$null
+        git config --global credential.helper manager >$null 2>$null
         CheckSuccessful "Install" "Git"
     }
 }
